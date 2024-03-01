@@ -41,6 +41,13 @@ void App::setup(){
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
+    io.Fonts->AddFontDefault();
+    static ImWchar ranges[] = { 0x1, static_cast<ImWchar>( 0x1FFFF), 0 };
+    static ImFontConfig cfg;
+    cfg.OversampleH = cfg.OversampleV = 1;
+    cfg.MergeMode = true;
+    cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
+
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();

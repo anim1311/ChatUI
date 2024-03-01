@@ -3,7 +3,7 @@
 
 int main(){
 
-    windowProperties windowProps(1280, 720, "Hello!", ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
+    windowProperties windowProps(1280, 720, "Chat App in C++ by Anirudh Madhusudhan", ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
 
     Application app(windowProps);
 
