@@ -41,13 +41,28 @@ void App::setup(){
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
-    io.Fonts->AddFontDefault();
-    static ImWchar ranges[] = { 0x1, static_cast<ImWchar>( 0x1FFFF), 0 };
-    static ImFontConfig cfg;
-    cfg.OversampleH = cfg.OversampleV = 1;
-    cfg.MergeMode = true;
-    cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
 
+    ImFontConfig config;
+    config.OversampleH = config.OversampleV = 1;
+    config.OversampleV = 1;
+    config.PixelSnapH = true;
+    config.SizePixels = 20.0f;
+    config.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
+    static ImWchar ranges[] = { 0x1, static_cast<ImWchar>(0x27250), 0 };
+    io.Fonts->AddFontFromFileTTF("../fonts/SF-Pro-Display-Regular.otf", 20.0f, &config, ranges);
+
+    
+    float baseFontSize = 20.0f; // 13.0f is the size of the default font. Change to the font size you use.
+    float iconFontSize = baseFontSize * 2.0f / 3.0f; // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
+
+    // merge in icons from Font Awesome
+    static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
+    ImFontConfig icons_config; 
+    icons_config.MergeMode = true; 
+    icons_config.PixelSnapH = true; 
+    icons_config.GlyphMinAdvanceX = iconFontSize;
+    io.Fonts->AddFontFromFileTTF( "../fonts/"  FONT_ICON_FILE_NAME_FAS, iconFontSize, &icons_config, icons_ranges );
+    
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();

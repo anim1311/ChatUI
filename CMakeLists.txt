@@ -9,6 +9,7 @@ include_directories(${CMAKE_SOURCE_DIR}/imgui)
 include_directories(${CMAKE_SOURCE_DIR}/imgui/backends)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
+
 # Source files
 file(GLOB SOURCES
      main.cpp
@@ -23,6 +24,8 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 find_package(glfw3 REQUIRED)
 target_link_libraries(${PROJECT_NAME} glfw)
 
+find_package(Freetype REQUIRED)
+target_link_libraries(${PROJECT_NAME} Freetype::Freetype)
 # Platform-specific configurations
 if(APPLE)
     find_library(OpenGL_LIBRARY OpenGL)
